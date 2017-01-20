@@ -4,7 +4,7 @@ clc
 data_train = csvread('train_nolabels.csv');
 data_test = csvread('test_nolabels.csv');
 %% Verify the numbers represented by pixels
-pick = 40;
+pick = 1;
 v = data_test(pick, :);
 V = reshape(v(1:end), [28,  28])';
 imshow(V);
@@ -62,3 +62,9 @@ end
 [errs_s, I] = sort(errs);
 fprintf('%d\n', y(I(1))); % Finally 1-NN.
 %fprintf('%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d\n', y(I(1)), y(I(2)), y(I(3)), y(I(4)), y(I(5)), y(I(6)), y(I(7)), y(I(8)), y(I(9)), y(I(10)), y(I(11)), y(I(12)), y(I(13)), y(I(14)), y(I(15)));
+%% Write data to files
+fd = fopen('y_test', 'w');
+for i = 1 : TSample
+   fprintf(fd, '%d\n', y(i)); 
+end
+fclose(fd);
