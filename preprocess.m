@@ -49,7 +49,7 @@ end
 %TT = T_de(((pick-1) * 28 + 1) : ((pick-1) * 28 + 28), :);
 y_test = zeros(TSample, 1);
 errs = zeros(nSample,1);
-for j = 1 : TSample
+for j = 1 : 1
     TT = T_de(((j-1) * 28 + 1) : ((j-1) * 28 + 28), :);
     for i = 1 : nSample
         DD = X_de(((i-1) * 28 + 1) : ((i-1) * 28 + 28), :);
@@ -65,6 +65,6 @@ fprintf('%d\n', y(I(1))); % Finally 1-NN.
 %% Write data to files
 fd = fopen('y_test', 'w');
 for i = 1 : TSample
-   fprintf(fd, '%d\n', y(i)); 
+   fprintf(fd, '%d\n', y_test(i)); 
 end
 fclose(fd);
